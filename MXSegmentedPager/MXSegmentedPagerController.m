@@ -77,7 +77,9 @@
     
     if (viewController) {
         [self addChildViewController:viewController];
-        [viewController didMoveToParentViewController:self];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [viewController didMoveToParentViewController:self];
+        });
 
         return viewController.view;
     }
